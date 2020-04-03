@@ -127,32 +127,32 @@ class CPU:
     def load(self):
         """Load a program into memory."""
 
-         address = 0
+        address = 0
 
-          program = []
+        program = []
 
-           if len(sys.argv) != 2:
-                print("usage: 03-fileio02.py filename")
-                sys.exit(1)
+        if len(sys.argv) != 2:
+            print("usage: 03-fileio02.py filename")
+            sys.exit(1)
 
-            try:
-                with open(sys.argv[1]) as f:
-                    for line in f:
-                        num = line.split('#')[0].strip()
+        try:
+            with open(sys.argv[1]) as f:
+                for line in f:
+                    num = line.split('#')[0].strip()
 
-                        if num == '':
-                            continue
+                    if num == '':
+                        continue
 
-                        value = int(num, 2)
-                        program.append(value)
+                    value = int(num, 2)
+                    program.append(value)
 
-            except FileNotFoundError:
-                print(f"{sys.argv[0]}: {sys.argv[1]} not found")
-                sys.exit(2)
+        except FileNotFoundError:
+            print(f"{sys.argv[0]}: {sys.argv[1]} not found")
+            sys.exit(2)
 
-            for instruction in program:
-                self.ram[address] = instruction
-                address += 1
+        for instruction in program:
+            self.ram[address] = instruction
+            address += 1
 
     def alu(self, op, reg_a, reg_b):
         """ALU operations."""
